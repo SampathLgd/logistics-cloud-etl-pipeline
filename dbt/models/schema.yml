@@ -1,0 +1,132 @@
+version: 2
+
+models:
+
+  - name: stg_deliveries
+    columns:
+      - name: delivery_id
+        data_tests:
+          - not_null
+          - unique
+
+      - name: delivery_status
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - ASSIGNED
+                  - PICKED_UP
+                  - IN_TRANSIT
+                  - OUT_FOR_DELIVERY
+                  - DELIVERED
+                  - FAILED
+                  - CANCELLED
+                  - RETURNED
+
+  - name: stg_delivery_events
+    columns:
+      - name: event_id
+        data_tests:
+          - not_null
+          - unique
+
+      - name: delivery_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_deliveries')
+                field: delivery_id
+
+  - name: stg_drivers
+    columns:
+      - name: driver_id
+        data_tests:
+          - not_null
+          - unique
+
+  - name: stg_vehicles
+    columns:
+      - name: vehicle_id
+        data_tests:
+          - not_null
+          - unique
+
+  - name: stg_locations
+    columns:
+      - name: location_id
+        data_tests:
+          - not_null
+          - unique
+
+  - name: fact_delivery
+    columns:
+      - name: delivery_id
+        data_tests:
+          - not_null
+          - unique
+
+      - name: driver_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_driver')
+                field: driver_id
+
+      - name: vehicle_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_vehicle')
+                field: vehicle_id
+
+      - name: pickup_location_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_location')
+                field: location_id
+
+      - name: delivery_location_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_location')
+                field: location_id
+
+  - name: fact_delivery_event
+    columns:
+      - name: event_id
+        data_tests:
+          - not_null
+          - unique
+
+      - name: delivery_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('fact_delivery')
+                field: delivery_id
+
+  - name: dim_driver
+    columns:
+      - name: driver_id
+        data_tests:
+          - not_null
+          - unique
+
+  - name: dim_vehicle
+    columns:
+      - name: vehicle_id
+        data_tests:
+          - not_null
+          - unique
+
+  - name: dim_location
+    columns:
+      - name: location_id
+        data_tests:
+          - not_null
+          - unique

@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: logistics_staging
+    database: LOGISTICS_DB
+    schema: STAGING
+
+    tables:
+      - name: stg_dim_driver
+
+      - name: stg_dim_vehicle
+
+      - name: stg_dim_location
+
+      - name: stg_fact_delivery
+
+      - name: stg_fact_delivery_event

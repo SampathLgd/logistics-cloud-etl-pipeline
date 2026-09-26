@@ -1,0 +1,10 @@
+flowchart TD
+    A["Mock REST API<br/>FastAPI"] --> B["Apache Airflow<br/>Daily DAG + Retry"]
+    B --> C["Python Extraction<br/>Pagination + API retry"]
+    C --> D["Amazon S3<br/>RAW JSON"]
+    D --> E["Raw Data Validation<br/>Schema + record counts"]
+    E --> F["PySpark 3.5.1<br/>Clean + enrich + deduplicate"]
+    F --> G["Amazon S3<br/>Processed Parquet"]
+    G --> H["Snowflake<br/>STAGING + MERGE"]
+    H --> I["dbt<br/>Staging + Dimensions + Facts + Marts"]
+    I --> J["Snowflake ANALYTICS<br/>Daily Metrics + Delay Summary"]

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<defs>
+  <style>
+    .title{font:700 34px Arial;fill:#172033}
+    .sub{font:400 18px Arial;fill:#5a667a}
+    .box{fill:#ffffff;stroke:#62748a;stroke-width:2;rx:18}
+    .h{font:700 20px Arial;fill:#172033}
+    .t{font:400 16px Arial;fill:#3c4858}
+    .layer{font:700 17px Arial;fill:#5a667a}
+    .arrow{stroke:#425466;stroke-width:3;fill:none;marker-end:url(#m)}
+  </style>
+  <marker id="m" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+    <path d="M0,0 L0,6 L9,3 z" fill="#425466"/>
+  </marker>
+</defs>
+<rect width="1600" height="900" fill="#f6f8fb"/>
+<text x="80" y="70" class="title">Cloud ETL Pipeline with Airflow Orchestration</text>
+<text x="80" y="105" class="sub">Logistics / delivery data pipeline • Python • AWS S3 • PySpark • Snowflake • dbt • Airflow • Docker</text>
+
+<text x="80" y="155" class="layer">SOURCE &amp; ORCHESTRATION</text>
+<rect x="80" y="180" width="240" height="100" class="box"/>
+<text x="200" y="218" text-anchor="middle" class="h">Mock REST API</text>
+<text x="200" y="246" text-anchor="middle" class="t">FastAPI</text>
+
+<rect x="410" y="180" width="250" height="100" class="box"/>
+<text x="535" y="218" text-anchor="middle" class="h">Apache Airflow</text>
+<text x="535" y="246" text-anchor="middle" class="t">Daily DAG + retries</text>
+
+<rect x="750" y="180" width="260" height="100" class="box"/>
+<text x="880" y="218" text-anchor="middle" class="h">Python Extraction</text>
+<text x="880" y="246" text-anchor="middle" class="t">Pagination + API retry</text>
+
+<path d="M320 230 H410" class="arrow"/>
+<path d="M660 230 H750" class="arrow"/>
+
+<text x="80" y="350" class="layer">STORAGE &amp; TRANSFORMATION</text>
+<rect x="80" y="375" width="300" height="110" class="box"/>
+<text x="230" y="415" text-anchor="middle" class="h">Amazon S3 — RAW</text>
+<text x="230" y="444" text-anchor="middle" class="t">JSON by entity / date</text>
+
+<rect x="480" y="375" width="300" height="110" class="box"/>
+<text x="630" y="415" text-anchor="middle" class="h">Raw Validation</text>
+<text x="630" y="444" text-anchor="middle" class="t">Schema + record-count checks</text>
+
+<rect x="880" y="375" width="300" height="110" class="box"/>
+<text x="1030" y="415" text-anchor="middle" class="h">PySpark 3.5.1</text>
+<text x="1030" y="444" text-anchor="middle" class="t">Clean + enrich + deduplicate</text>
+
+<path d="M230 280 V375" class="arrow"/>
+<path d="M380 430 H480" class="arrow"/>
+<path d="M780 430 H880" class="arrow"/>
+
+<rect x="280" y="565" width="300" height="110" class="box"/>
+<text x="430" y="605" text-anchor="middle" class="h">Amazon S3 — PROCESSED</text>
+<text x="430" y="634" text-anchor="middle" class="t">Parquet partitions</text>
+
+<rect x="700" y="565" width="300" height="110" class="box"/>
+<text x="850" y="605" text-anchor="middle" class="h">Snowflake — STAGING</text>
+<text x="850" y="634" text-anchor="middle" class="t">COPY / MERGE / Upsert</text>
+
+<path d="M1030 485 V525 H430 V565" class="arrow"/>
+<path d="M580 620 H700" class="arrow"/>
+
+<text x="80" y="745" class="layer">WAREHOUSE MODELING &amp; ANALYTICS</text>
+<rect x="280" y="770" width="300" height="100" class="box"/>
+<text x="430" y="807" text-anchor="middle" class="h">dbt</text>
+<text x="430" y="834" text-anchor="middle" class="t">Models + 34 data-quality tests</text>
+
+<rect x="700" y="770" width="420" height="100" class="box"/>
+<text x="910" y="807" text-anchor="middle" class="h">Snowflake — ANALYTICS</text>
+<text x="910" y="834" text-anchor="middle" class="t">Facts / Dimensions / Daily Metrics / Delay Summary</text>
+
+<path d="M850 675 V720 H430 V770" class="arrow"/>
+<path d="M580 820 H700" class="arrow"/>
+</svg>

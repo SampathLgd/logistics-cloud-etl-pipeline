@@ -1,0 +1,12 @@
+name: 'logistics_dbt'
+version: '1.0.0'
+config-version: 2
+
+profile: 'logistics_dbt'
+
+model-paths: ["models"]
+test-paths: ["tests"]
+
+models:
+  logistics_dbt:
+    +materialized: table
